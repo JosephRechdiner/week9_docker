@@ -86,8 +86,9 @@ def load_backup():
 def save_backup():
     # load the data
     data = load_database()
-    
+
     # making sure backup is ready to be loaded
     ensure_backup_database_exists()
     with open(DB_BACKUP_PATH, "w") as file:
         json.dump(data, file, indent=2)
+        return {"msg": "Data saved succesfully!"}
