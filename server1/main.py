@@ -56,7 +56,7 @@ def get_all_items():
 def add_item(item: Item):
     db = load_database()
     new_item = item.dict()
-    new_item["id"] = str(len(db) + 1)
+    new_item["id"] = len(db) + 1
     db.append(new_item)
     save_database(db)
     return {

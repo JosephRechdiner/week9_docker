@@ -54,7 +54,7 @@ def get_all_items():
 def add_item(item: Item):
     db = load_database()
     new_item = item.dict()
-    new_item["id"] = str(len(db) + 1)
+    new_item["id"] = len(db) + 1
     db.append(new_item)
     save_database(db)
     return {
@@ -90,5 +90,8 @@ def save_backup():
     # making sure backup is ready to be loaded
     ensure_backup_database_exists()
     with open(DB_BACKUP_PATH, "w") as file:
-        json.dump(data, file, indent=2)
-        return {"msg": "Data saved succesfully!"}
+        try:
+            json.dump(data, file, indent=2)
+            return {"msg": "Data backup saved succesfully!"}
+        except:
+            return {"msg": "Could not save data backup"}

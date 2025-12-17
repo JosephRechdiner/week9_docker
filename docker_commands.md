@@ -43,3 +43,8 @@ docker build -t shopping-server2:v1 ./server2
 ```bash
 docker run -p 8001:8001 -v fastapi-db:/app/db shopping-server2:v1
 ```
+
+### Run the container BONUS
+```bash
+docker run -p 8001:8001 -v fastapi-db:/app/db -v  ./server2/data:/app/data shopping-server2:v1
+```
